@@ -12,6 +12,8 @@ func main() {
 	fmt.Println("Hand: ", hand)
 	fmt.Println("Remaining cards: ", remainingCards)
 
+	fmt.Println("Cards left in deck: ", len(cards))
+
 	err := cards.saveToFile("cards.txt")
 	if err != nil {
 		return
