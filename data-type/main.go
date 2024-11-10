@@ -87,7 +87,7 @@ func main() {
 
 	fmt.Println("Reference Types ==========================>")
 
-	var m map[string]int = map[string]int{"apple": 5, "oranges": 3}
+	var m = map[string]int{"apple": 5, "oranges": 3}
 
 	fmt.Println("Use maps when you need to store key-value pairs", m)
 	fmt.Println("Retrieve value by key", m["apple"])
@@ -108,4 +108,21 @@ func main() {
 
 	var a Animal = Dog{}   // Dog implements the Animal interface
 	fmt.Println(a.Speak()) // Output: Woof!
+
+	animal := make(map[string]int)
+
+	animal["dog"] = 10
+	animal["cat"] = 1
+
+	for breed, amount := range animal {
+		fmt.Printf("%s has %d\n", breed, amount)
+	}
+
+	addAnimal(animal)
+
+	fmt.Println("rat: ", animal["rat"])
+}
+
+func addAnimal(a map[string]int) {
+	a["rat"] = 2
 }
