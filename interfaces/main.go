@@ -16,6 +16,13 @@ type AuthorArticles interface {
 	printAuthorName()
 }
 
+type bot interface {
+	getGreeting() string
+}
+
+type englishBot struct{}
+type spanishBot struct{}
+
 // Structure
 type author struct {
 	aName     string
@@ -49,6 +56,18 @@ func (a author) articles() {
 	fmt.Printf("Pending articles: %d:\n", pendingArticles)
 }
 
+func (eb englishBot) getGreeting() string {
+	return "Hello"
+}
+
+func (sb spanishBot) getGreeting() string {
+	return "Halo"
+}
+
+func getGreeting(b bot) {
+	fmt.Println(b.getGreeting())
+}
+
 func main() {
 	// Assigning values
 	// to the structure
@@ -72,4 +91,10 @@ func main() {
 	// of the interface 2
 	var i2 AuthorArticles = values
 	i2.articles()
+
+	eb := englishBot{}
+	sb := spanishBot{}
+
+	getGreeting(eb)
+	getGreeting(sb)
 }
